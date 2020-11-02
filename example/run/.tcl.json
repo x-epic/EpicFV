@@ -1,0 +1,1 @@
+{"clock_name":"","cycle_reset_num":"","cycle_simulate_num":"","engine_arr":[],"file_arr":[],"filelist":"filelist","is_sim_run":false,"marco_map":{"RTL_BUG":""},"res_map":{"mode":"bmc","top_module":"traffic"},"reset_name":"rst","reset_polarity":true,"script_arr":[],"verilog_file_arr":[]}

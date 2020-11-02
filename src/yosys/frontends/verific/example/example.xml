@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites disabled="0" errors="1" failures="0" tests="1" time="0">
+<testsuite disabled="0" errors="1" failures="0" name="example" skipped="0" tests="1" time="0">
+<properties>
+<property name="os" value="posix"/>
+</properties>
+<testcase classname="example" name="default" status="ERROR" time="0">
+<error message="ERROR" type="ERROR"/>
+<system-out>SBY 13:15:09 [example] Copy 'example.sv' to 'example/src/example.sv'.
+SBY 13:15:09 [example] engine_0: smtbmc yices
+SBY 13:15:09 [example] base: starting process &quot;cd example/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 13:15:09 [example] base: ERROR: This version of Yosys is built without Verific support.
+SBY 13:15:09 [example] base: Use Symbiotic EDA Suite if you need Yosys+Verifc.
+SBY 13:15:09 [example] base: https://www.symbioticeda.com/seda-suite
+SBY 13:15:09 [example] base: Contact office@symbioticeda.com for free evaluation
+SBY 13:15:09 [example] base: binaries of Symbiotic EDA Suite.
+SBY 13:15:09 [example] base: finished (returncode=1)
+SBY 13:15:09 [example] base: job failed. ERROR.
+SBY 13:15:09 [example] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 13:15:09 [example] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 13:15:09 [example] DONE (ERROR, rc=16)
+</system-out></testcase></testsuite></testsuites>

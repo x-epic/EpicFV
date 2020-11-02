@@ -1,0 +1,21 @@
+#Note--------------------------------------------------------------------------
+#   cutomer can list down all the RTL files and also SVA files here.
+#   but in real project, we normally seperate RTL files and SVA files into to filelist.
+#   Next step we can try to support -f / -I inside a filelist.
+#   -f xxx : to include all the files inside another filelist:xxx
+#   -I yyy : the path directory we used to search files inside filelist.
+#--------------------------------------------------------------------------------
+
+#-f $DESIGN_PATH/filelist
+#-f $SVA_PATH/filelist
+
+#$RTL_PATH/top.v
+#$RTL_PATH/sub_m/module_a.v
+#$RTL_PATH/sub_m/module_b.v
+#$RTL_PATH/sub_m/module_c.v
+#$RTL_PATH/sub_m/module_d.v
+
+#../../extern/picorv32.v
+
+../RTL/traffic.v
+../RTL/street_ctrl_fsm.v

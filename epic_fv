@@ -1,0 +1,59 @@
+#!/bin/bash
+
+if [[ "${EPICFV_HOME}"x == "x" ]]; then
+    SHELLDIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
+    echo "EPIC set env: export EPICFV_HOME=$SHELLDIR"
+    export EPICFV_HOME=$SHELLDIR
+fi
+
+#remove last / in EPIC_HOME if exist
+if [[ ${EPICFV_HOME} == */ ]]; then
+    export EPICFV_HOME=${EPICFV_HOME%?}
+ fi
+
+export EPIC_FV_LOG="true"
+export LD_LIBRARY_PATH="$EPICFV_HOME/binary/share/openmpi/lib:$LD_LIBRARY_PATH"
+export OPAL_PREFIX="$EPICFV_HOME/binary/share/openmpi"
+export PATH="$EPICFV_HOME/binary/bin:$PATH"
+
+NUM_CORE=`grep -c ^processor /proc/cpuinfo`
+
+IS_WORKER=""
+WORKERS="4"
+#if [ "$NUM_CORE" -lt "$WORKERS" ]; then
+#  WORKERS=$NUM_CORE
+#fi
+IS_FILE=""
+FILE=""
+IS_SESSION=""
+IS_RESET=""
+
+for arg; do
+    case "$arg" in
+        -worker)    IS_WORKER="t" ;;
+        -f)         IS_FILE="t" ;;
+        -session)   IS_SESSION="t" ;;
+        -reset)     IS_RESET="t" ;;
+        *)
+            if [ "${IS_WORKER}"x != "x" ]; then
+                WORKERS=$arg;
+                IS_WORKER="";
+            fi
+            if [ "${IS_FILE}"x != "x" ]; then
+                FILE=$arg;
+                IS_FILE="";
+            fi
+            if [ "${IS_SESSION}"x != "x" ]; then
+                export EPICFV_SESSION=$arg;
+                IS_SESSION="";
+            fi
+    esac
+done
+            
+if [ "${IS_RESET}"x != "x" ]; then
+    rm -rf *_db;
+    rm -rf *_db.bak;
+    exit 0
+fi
+
+$EPICFV_HOME/binary/epic_fv_start $WORKERS $FILE
